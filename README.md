@@ -6,7 +6,10 @@ many small XLF files you can run this tool to merge them before invoking Angular
 
 ## Installation
 ```bash
-npm install -g xlf-merge
+npm install -g @kaylucas/xlf-merge
+```
+```bash
+yarn global add @kaylucas/xlf-merge
 ```
 
 ## Usage
