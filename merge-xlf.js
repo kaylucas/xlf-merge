@@ -61,16 +61,19 @@ module.exports = function(first, second, fileName) {
 
     for (const srcTransUnit of getTransUnits(srcRoot)) {
         const id = srcTransUnit.attributes.id;
-        const content = getContent(getElement(srcTransUnit, ['target'], true));
+        const element = getElement(srcTransUnit, ['target'], true);
+        let content = getContent(element);
 
         const matchingTgt = findTgtById(id);
         if (matchingTgt) {
             const tgtContent = getContent(getElement(matchingTgt, ['target'], true));
             if (content !== tgtContent) {
-                console.log('trans-unit', id);
-                console.log('already present content:', content);
-                console.log('differs in file', fileName, ':', tgtContent);
-                fail('Translations mismatch at trans-unit ID: ' + id + '.');
+                console.log(`trans-unit ${id} is already present. Preferring ${fileName}: "${tgtContent}" over "${content}".`);
+
+                // Update the content
+                content = tgtContent;
+
+                // fail('Translations mismatch at trans-unit ID: ' + id + '.');
             }
         } else {
             if (!tgtRoot.elements) {
