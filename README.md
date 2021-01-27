@@ -1,4 +1,5 @@
 # xlf-merge
+## Forked from https://github.com/jaroslavsvak/xlf-merge
 Command line tool that merges any number of XLF 1.2 files.
 
 Useful for Angular apps where the NG compiler requires single translation file per language. If your translations are organized into
